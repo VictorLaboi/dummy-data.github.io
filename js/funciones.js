@@ -145,3 +145,4 @@ function generar() {
         document.body.removeChild(archivo);   
 
     } 
+    } 
