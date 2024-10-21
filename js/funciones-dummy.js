@@ -1,5 +1,4 @@
-
-
+var resultado="";
 const apellidosAlemanes = [
     "Müller", "Schmidt", "Schneider", "Fischer", "Weber",
     "Meyer", "Wagner", "Becker", "Hoffmann", "Schulz",
@@ -20,7 +19,7 @@ const apellidosAlemanes = [
     "Weiss", "Otten", "Schulze", "Meyer", "Schmitt",
     "Möller", "Schreiber", "Fischer", "Schmitt", "Pfeiffer",
     "Fiedler", "Ziegler", "Engel", "Senger", "Friedrich",
-    "Sauter", "Moser", "Eberhardt"
+    "Sauter", "Moser", "Eberhardt", "Zufall", "Schneckenburger"
 ];
 
 const apellidosEspanoles = [
@@ -42,111 +41,107 @@ const apellidosEspanoles = [
 "Gonzales", "Mena", "Correa", "Sánchez", "Serrato",
 "Montes", "Salgado", "Aguilera", "Aranda", "Tovar",
 "Solares", "Zapata", "Contreras", "Ferrer", "Salvador",
-"Medina", "Pérez", "Arroyo", "Lara", "Saavedra"
+"Medina", "Pérez", "Arroyo", "Lara", "Saavedra", "Noriega", 
+"Burgos", "Savedra", "Marrufo", "Abril"
 ];
 
-const nombresChino = [
-    "Mei Ling", "Li Wei", "Chen Xi", "Jing Yi", "Hong Yu",
-    "Zhi Hao", "Xiao Feng", "Lan Tian", "An Ming", "Bai He",
-    "Cai Wen", "De Ming", "Fang Hua", "Gao Jie", "Hai Yan",
-    "Hui Ying", "Jian Guo", "Jun Li", "Kai Xin", "Lei Feng",
-    "Ming Yue", "Ning Hua", "Ping An", "Qiao Lin", "Rui Ming",
-    "Shan Shan", "Tian Hao", "Wei Zhong", "Xiang Li", "Yi Ling",
-    "Zhao Yang", "Bo Rong", "Chang Hua", "Dong Mei", "Er Xiang",
-    "Fu Wen", "Gui Ying", "He Lan", "Ji Fang", "Ke Long",
-    "Li Hua", "Mo Ling", "Nuo Ya", "Ou Yang", "Pei Xuan",
-    "Qing Shui", "Ran Xin", "Shan Yu", "Tong Fang", "Wen Yue",
-    "Xue Yi", "Ying Jie", "Zhen Hao", "Bao Lin", "Cheng Fang",
-    "Di Wen", "Fen Lan", "Guang Ming", "Hao Ran", "Jian Ning",
-    "Kang Jun", "Ling Zhi", "Meng Yu", "Nian Hua", "Ping Rui",
-    "Qing Mei", "Ran Feng", "Shu Yi", "Tian Yu", "Wan Ying",
-    "Xi Rui", "Yan Mei", "Zhi Hui", "Ao Rong", "Bin Xiao",
-    "Chong Wei", "De Zhi", "Fang Lan", "Guo Feng", "Hua Xi",
-    "Jing Rui", "Kai Lun", "Lan Hua", "Min Qi", "Nan Xiang",
-    "Qing Rui", "Rong Wei", "Si Jing", "Tao Li", "Wei Qiang",
-    "Xi Yue", "Yi Fan", "Zhen Yu", "Bo Wen", "Cheng Ming",
-    "Dong Rui", "Fei Ying", "Guang Xi", "Hui Fang", "Jian Feng"
-];
 const nombresEspanol = [
-    "Alejandro", "María", "Juan", "Sofía", "Carlos",
-    "Lucía", "José", "Ana", "Miguel", "Elena",
-    "Luis", "Carmen", "David", "Isabel", "Francisco",
-    "Gabriela", "Fernando", "Daniel", "Laura", "Javier",
-    "Andrés", "Patricia", "Pablo", "Mónica", "Antonio",
-    "Raquel", "Roberto", "Beatriz", "Diego", "Rosa",
-    "Alberto", "Julia", "Hugo", "Claudia", "Ricardo",
-    "Marcos", "Sara", "Enrique", "Lorena", "Sergio",
-    "Valeria", "Ramón", "Teresa", "Óscar", "Esther",
-    "Víctor", "Inés", "Tomás", "Silvia", "Manuel",
-    "Natalia", "Alfonso", "Marina", "Raúl", "Eva",
-    "Ángel", "Luz", "Ignacio", "Elisa", "Eduardo",
-    "Emilio", "Paula", "Félix", "Alicia", "Rubén",
-    "Gloria", "Rafael", "Victoria", "Adrián", "Marta",
-    "Cristina", "Santiago", "Verónica", "Mario", "Ariadna",
-    "Clara", "Alonso", "Irene", "Guillermo", "Esteban",
-    "Federico", "Olga", "Marcos", "Elsa", "Héctor",
-    "Álvaro", "Montserrat", "Iván", "Bárbara", "Nicolás",
-    "Eladio", "Manuela", "Joaquín", "Pilar", "Sebastián",
-    "Gonzalo", "Leonor", "Diana", "Jaime", "Cecilia"
+"Sofía", "Liam", "Valentina", "Mateo", "Camila",
+"Lucas", "Isabella", "Diego", "Mía", "Sebastián",
+"Emma", "Daniel", "Lucía", "Alejandro", "Victoria",
+"Mateo", "Natalia", "Pablo", "María", "Gonzalo",
+"Elena", "Nicolás", "Ana", "Javier", "Laura",
+"Santiago", "Clara", "Manuel", "Paula", "Rafael",
+"Carla", "Samuel", "Sofía", "Rocío", "Fernando",
+"Marcos", "Alba", "Antonio", "Alicia", "David",
+"Bruno", "Julieta", "Martín", "Nina", "Maximiliano",
+"Carmen", "Salvador", "Teresa", "Álvaro", "Gema",
+"Diego", "Sabrina", "Iván", "Verónica", "Julio",
+"Camilo", "Sara", "Roberto", "Candela", "Hugo",
+"Patricia", "Lucas", "Jazmín", "Fabián", "Inés",
+"Esteban", "Rosa", "Simón", "Marina", "Oscar",
+"Valeria", "Cristian", "Tania", "Julio", "Bárbara",
+"Sergio", "Luciana", "Diego", "Gabriela", "Ángela"
 ];
 
-function generarFechasAleatorias(cantidadBloques) {
-    const fechas = [];
+const nombresChinos = [
+"Li Wei", "Wang Fang", "Zhang Wei", "Liu Yang", "Chen Li",
+"Yang Lei", "Zhao Min", "Huang Jing", "Wu Tao", "Xu Na",
+"Zhou Jie", "Ma Qiang", "Hu Min", "Zheng Fei", "He Ping",
+"Gong Wei", "Lin Li", "Gao Feng", "Lu Yao", "Liang Jun",
+"Zhong Li", "Song Wei", "Fu Hua", "Deng Wei", "Ruan Mei",
+"Xue Gang", "Fu Xue", "Qiu Li", "Qian Wei", "Yu Ting",
+"Shen Wei", "Cai Ling", "Xiong Liang", "Li Dan", "Duan Mei",
+"Jia Hui", "Peng Gang", "Feng Jian", "Jiang Yu", "Cheng Lei",
+"Deng Li", "Lin Jing", "Zhao Yu", "Pan Yan", "Wei Feng",
+"Pang Wei", "He Jing", "Ge Mei", "Shen Tao", "Zhong Wei",
+"Yin Yan", "Cai Wei", "Wang Yang", "Lü Jun", "Qiu Yun",
+"Li Ting", "Wang Qiang", "Liu Li", "Zhu Wei", "Chen Wei",
+"Sun Li", "Ma Ning", "Feng Wei", "Hu Wei", "Shen Wei",
+"Li Ying", "Cai Qian", "Yin Qiang", "Wang Yi", "Liu Hong",
+"Zhou Ping", "Wang Ming", "Li Jing", "Zhang Qiang", "Chen Yan",
+"Zhao Lei", "Liu Qiang", "Ma Li", "Yin Yong", "Wang Wei"
+];
 
-    // Función para generar una fecha aleatoria entre dos fechas
-    function generarFechaAleatoria() {
-        const inicio = new Date(1970, 0, 1); // Fecha mínima: 1 de enero de 1970
-        const fin = new Date(2024, 11, 31);  // Fecha máxima: 31 de diciembre de 2024
-        const fechaAleatoria = new Date(inicio.getTime() + Math.random() * (fin.getTime() - inicio.getTime()));
-        
-        const anio = fechaAleatoria.getFullYear();
-        const mes = String(fechaAleatoria.getMonth() + 1).padStart(2, '0'); // Mes va de 0 a 11, por eso se suma 1
-        const dia = String(fechaAleatoria.getDate()).padStart(2, '0');
-        
-        return `${anio}-${mes}-${dia}`;
-    }
+function generarFechaAleatoria(inicio, fin) {
+    // Convierte las fechas de entrada a milisegundos
+    const fechaInicio = new Date(inicio).getTime();
+    const fechaFin = new Date(fin).getTime();
 
-    // Generar los bloques de fechas
-    for (let i = 0; i < cantidadBloques; i++) {
-        const bloque = [];
-        for (let j = 0; j < 1; j++) {
-            bloque.push(generarFechaAleatoria());
-        }
-        fechas.push(bloque);
-    }
+    // Genera un timestamp aleatorio entre las dos fechas
+    const timestampAleatorio = Math.random() * (fechaFin - fechaInicio) + fechaInicio;
 
-    return fechas;
+    // Crea un objeto Date a partir del timestamp aleatorio
+    const fechaAleatoria = new Date(timestampAleatorio);
+
+    // Formatea la fecha en año-mes-día
+    const año = fechaAleatoria.getFullYear();
+    const mes = String(fechaAleatoria.getMonth() + 1).padStart(2, '0'); // +1 porque los meses son 0-indexados
+    const dia = String(fechaAleatoria.getDate()).padStart(2, '0');
+
+    return `${año}-${mes}-${dia}`;
 }
-
-// Ejemplo de uso: generar 10 bloques de 5 fechas aleatorias
-const fechasAleatorias = generarFechasAleatorias(1);
-console.log(fechasAleatorias);
-
 
 
 function generar() {
-    var resultado=""
+    resultado=`CREATE DATABASE IF NOT EXISTS sistema_escolar; <br>
+    USE sistema_escolar;<br>
+    DROP TABLE IF EXISTS alumnos; <br>
     
+    CREATE TABLE IF NOT EXISTS alumnos ( <br>
+    matricula BIGINT UNSIGNED NOT NULL UNIQUE CHECK(CHAR_LENGTH(matricula)=9), <br>
+    PRIMARY KEY (matricula), <br>
+    apellido1 VARCHAR(255) NOT NULL, <br>
+    apellido2 VARCHAR(255), <br>
+    nombres VARCHAR(255) NOT NULL, <br>
+    correo VARCHAR(255) NOT NULL, <br>
+    fecha_nacimiento DATE NOT NULL <br>
+    ); <br>
+
+    INSERT INTO alumnos(matricula, apellido1, apellido2, nombres, correo, fecha_nacimiento) VALUES ` ;
     var matricula = 223090001;
 
-     
-
     for (let i = 0; i < 50000; i++) {
-       resultado+= `('${matricula++}'),
-         '${apellidosAlemanes[Math.floor(Math.random()*100)]}',
-         '${apellidosEspanoles[Math.floor(Math.random()*100)]}', 
-         '${Math.floor(Math.random() * 2 + 1) == 1 ?
-           nombresEspanol[Math.floor(Math.random() * 100)] :
-           nombresChino[Math.floor(Math.random() * 100)] + " "
-           + nombresEspanol[Math.floor(Math.random() * 100)]}' ,
+       resultado+= `('${matricula++}',
+         '${apellidosAlemanes[Math.floor(Math.random()*100)]}', '${apellidosEspanoles[Math.floor(Math.random()*100)]}', '${Math.floor(Math.random()*2)+1 ==1 ? nombresEspanol[Math.floor(Math.random()*80)] : nombresChinos[Math.floor(Math.random()*80)] + " " + nombresEspanol[Math.floor(Math.random()*80)]}',
          '${matricula-1}@unikino.edu.mx',
-        '${fechasAleatorias}')<br>`;}
-    //resultado+= `;` ;
-    resultado+=resultado.slice(0,-4)+";";
-
+         '${generarFechaAleatoria('1930-01-01', '2005-12-31')}'),
+         <br>`;
+    }
+    resultado=resultado.slice(0,-15)+";";
     document.getElementById("parrafo").innerHTML = resultado;
 
-   
-
+    
 }
 
+    function generar_archivo (){
+        var archivo = document.createElement("a");
+        var salida = resultado.replace(/<br>/g,"\n").trim();
+        archivo.setAttribute("href","data:text/plane;charset=utf-8,"+encodeURIComponent(salida));
+        archivo.setAttribute("download","sistema_escolar.sql");
+        archivo.style.display="none";
+        document.body.appendChild(archivo);
+        archivo.click();
+        document.body.removeChild(archivo);   
+
+    } 
